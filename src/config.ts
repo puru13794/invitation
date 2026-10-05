@@ -7,12 +7,12 @@ export const invitation = {
   groom: {
     name: "Purushottam Reddy",
     teluguName: "పురుషోత్తమ్ రెడ్డి",
-    parents: "S/o [Father's Name] & [Mother's Name]",
+    parents: "S/o Sri Ramakrishna Reddy & Smt. Anjanamma",
   },
   bride: {
     name: "Kavya Reddy",
     teluguName: "కావ్య రెడ్డి",
-    parents: "D/o [Father's Name] & [Mother's Name]",
+    parents: "D/o Late Sri Raja Gopal Reddy & Smt. Mani Kumari",
   },
 
   /**
@@ -52,7 +52,7 @@ export const invitation = {
     { time: "[12:30 PM]", title: "Vindhu Bhojanam", text: "A traditional feast served on banana leaves. Please join us!" },
   ],
 
-  hosts: "[Groom's Family] & [Bride's Family]",
+  hosts: "Ramakrishna Reddy's Family & Gopal Reddy's Family",
   /** Shared via WhatsApp / native share. */
   shareText: "You're invited to the engagement of Purushottam Reddy & Kavya Reddy 💍",
 
