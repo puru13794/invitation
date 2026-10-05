@@ -83,14 +83,22 @@ export function Invitation() {
             <Flourish className="flourish flourish--heart" heart />
 
             <div data-reveal>
+              <p className="label">Date &amp; Time</p>
+              <p className="when-date">{inv.dateText}</p>
+              <p className="when-time">{inv.timeText}</p>
+            </div>
+
+            <Flourish className="flourish flourish--sm" />
+
+            <div data-reveal>
               <p className="label">Venue</p>
               <h2 className="venue-name">{inv.venue.name}</h2>
-              <Flourish className="flourish flourish--sm" />
               <p className="venue-address">{inv.venue.address}</p>
-              <p className="venue-when">{inv.dateText} · {inv.timeText}</p>
             </div>
             <div className="map" data-reveal>
               <iframe src={inv.venue.mapEmbedUrl} title="Venue location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+              {/* covers Google's small "Maps" button with our own "Venue" chip (same link) */}
+              <a className="map__chip" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer">📍 Venue</a>
             </div>
             <a className="btn" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer" data-reveal>📍 Get Directions</a>
 

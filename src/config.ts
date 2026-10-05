@@ -9,7 +9,7 @@ export const invitation = {
     parents: "S/o Sri Ramakrishna Reddy & Smt. Anjanamma",
   },
   bride: {
-    name: "Kavya Reddy",
+    name: "Kavya",
     parents: "D/o Late Sri Raja Gopal Reddy & Smt. Mani Kumari",
   },
 
