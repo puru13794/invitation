@@ -10,27 +10,6 @@ import { Countdown } from "./Countdown";
 import { ScratchReveal } from "./ScratchReveal";
 import { Burst, Petals } from "./Petals";
 
-/* ── calendar helpers ── */
-const toICSDate = (d: Date) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-function calendarLinks() {
-  const start = new Date(inv.dateISO);
-  const end = new Date(start.getTime() + inv.durationHours * 3600_000);
-  const title = `Engagement · ${inv.groom.name} & ${inv.bride.name}`;
-  const where = `${inv.venue.name}, ${inv.venue.address}`;
-  const google =
-    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-    `&text=${encodeURIComponent(title)}&dates=${toICSDate(start)}/${toICSDate(end)}` +
-    `&location=${encodeURIComponent(where)}&details=${encodeURIComponent(inv.venue.mapsLink)}`;
-  const ics = [
-    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//engagement//EN", "BEGIN:VEVENT",
-    `UID:${toICSDate(start)}@engagement`, `DTSTAMP:${toICSDate(new Date())}`,
-    `DTSTART:${toICSDate(start)}`, `DTEND:${toICSDate(end)}`,
-    `SUMMARY:${title}`, `LOCATION:${where.replace(/,/g, "\\,")}`, `URL:${inv.venue.mapsLink}`,
-    "END:VEVENT", "END:VCALENDAR",
-  ].join("\r\n");
-  return { google, ics: `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}` };
-}
-
 export function Invitation() {
   const [opened, setOpened] = useState(false);
   const [burst, setBurst] = useState(0);
@@ -45,8 +24,6 @@ export function Invitation() {
     document.documentElement.classList.remove("locked");
     window.scrollTo(0, 0);
   }, [music]);
-
-  const cal = calendarLinks();
 
   return (
     <div className={`site ${opened ? "is-open" : ""}`}>
@@ -91,10 +68,6 @@ export function Invitation() {
             </div>
             <p className="caps caps--sm save__until" data-reveal>Counting down to the muhurtham</p>
             <div className="countdown-wrap" data-reveal><Countdown target={inv.dateISO} /></div>
-            <div className="btn-row" data-reveal>
-              <a className="btn" href={cal.google} target="_blank" rel="noopener noreferrer">📅 Google Calendar</a>
-              <a className="btn btn--ghost" href={cal.ics} download="engagement.ics">🍎 Apple / Other</a>
-            </div>
           </div>
         </section>
 

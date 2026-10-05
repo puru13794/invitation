@@ -14,12 +14,10 @@ export const invitation = {
   },
 
   /**
-   * Muhurtham in ISO format with the IST offset — drives the countdown and
-   * the "Add to calendar" button. Example: "2026-12-14T10:30:00+05:30"
+   * Muhurtham in ISO format with the IST offset — drives the countdown.
+   * Example: "2026-12-14T10:30:00+05:30"
    */
   dateISO: "2026-10-12T10:00:00+05:30",
-  /** How long the function runs, used for the calendar entry. */
-  durationHours: 4,
 
   /** Shown exactly as written on the invitation. */
   dateText: "Monday, 12 October 2026",
