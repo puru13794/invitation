@@ -1,4 +1,5 @@
 /* Hand-built SVG illustrations — no images to download, crisp at any size. */
+import type { CSSProperties } from "react";
 
 const r1 = (n: number) => Math.round(n * 10) / 10;
 
@@ -14,8 +15,8 @@ function Marigold({ x, y, r, tone = 0 }: { x: number; y: number; r: number; tone
   return (
     <g>
       {ruff}
-      <circle cx={x} cy={y} r={r * 0.7} fill={inner} />
-      <circle cx={x} cy={y} r={r * 0.32} fill={outer} opacity={0.8} />
+      <circle cx={r1(x)} cy={r1(y)} r={r1(r * 0.7)} fill={inner} />
+      <circle cx={r1(x)} cy={r1(y)} r={r1(r * 0.32)} fill={outer} opacity={0.8} />
     </g>
   );
 }
@@ -34,7 +35,8 @@ function MangoLeaf({ x, y, len = 40, rot = 0 }: { x: number; y: number; len?: nu
 export function Toran({ className }: { className?: string }) {
   const W = 400;
   const n = 13;
-  const sag = (x: number) => 10 + Math.sin((x / W) * Math.PI) * 10;
+  // rounded so server- and browser-rendered SVG match exactly (Math.sin can differ in the last digit)
+  const sag = (x: number) => r1(10 + Math.sin((x / W) * Math.PI) * 10);
   return (
     <svg className={className} viewBox={`0 0 ${W} 62`} preserveAspectRatio="xMidYMin slice" aria-hidden>
       <path d={`M0 10 Q ${W / 2} 30 ${W} 10`} stroke="#8a5a1c" strokeWidth={1.6} fill="none" />
@@ -223,9 +225,9 @@ export function GoldVine({ className }: { className?: string }) {
 }
 
 /** Gold lotus emblem for the top of each page. */
-export function Emblem({ className }: { className?: string }) {
+export function Emblem({ className, style }: { className?: string; style?: CSSProperties }) {
   return (
-    <svg className={className} viewBox="0 0 80 70" aria-hidden>
+    <svg className={className} style={style} viewBox="0 0 80 70" aria-hidden>
       <g fill="none" stroke="#b98b3f" strokeWidth="1.6" strokeLinejoin="round">
         <path d="M40 54 C30 44 30 26 40 12 C50 26 50 44 40 54Z" />
         <path d="M40 54 C26 52 16 40 16 26 C28 30 36 40 40 54Z" />
@@ -241,9 +243,9 @@ export function Emblem({ className }: { className?: string }) {
 }
 
 /** Thin gold rule with a scrolled centre, optionally a heart. */
-export function Flourish({ className, heart }: { className?: string; heart?: boolean }) {
+export function Flourish({ className, heart, style }: { className?: string; heart?: boolean; style?: CSSProperties }) {
   return (
-    <svg className={className} viewBox="0 0 240 24" aria-hidden>
+    <svg className={className} style={style} viewBox="0 0 240 24" aria-hidden>
       <g fill="none" stroke="#b98b3f" strokeWidth="1.2" strokeLinecap="round">
         <path d={heart ? "M10 12 H86" : "M10 12 H96"} />
         <path d={heart ? "M154 12 H230" : "M144 12 H230"} />

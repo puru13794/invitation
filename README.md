@@ -25,3 +25,12 @@ npm run dev     # http://localhost:3000
 ## Deploy to Vercel
 - Push this folder to a GitHub repo → vercel.com/new → Import → Deploy (no settings needed), or
 - `npx vercel --prod` from this folder.
+
+## Teaser video (WhatsApp)
+A 21-second vertical (1080×1920) MP4 using the same art and music.
+```bash
+npm run dev                 # terminal 1
+npm run video               # terminal 2 → out/engagement-invitation.mp4
+```
+Preview it live at http://localhost:3000/video (dev only — not deployed). Edit timing in
+`src/app/video/video.css`; needs Google Chrome and ffmpeg.

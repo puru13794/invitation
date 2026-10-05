@@ -1,0 +1,110 @@
+/* Teaser video (540×960 CSS px, captured at 2× → 1080×1920). All timing is
+   absolute seconds from the start so frames can be seeked deterministically. */
+
+.v { position: relative; width: 540px; height: 960px; margin: 0 auto; overflow: hidden; background: var(--marble); --page: 540px; }
+
+/* world: slow push-in */
+.v-world { position: absolute; inset: 0; transform-origin: 50% 40%; animation: vZoom 21s linear both; }
+@keyframes vZoom { from { transform: scale(1.14); } to { transform: scale(1); } }
+.v .frame__arch { top: 76px; left: 40px; right: 40px; border-radius: 50% 50% 0 0 / 200px 200px 0 0; }
+.v .frame__panel { border-radius: 50% 50% 0 0 / 192px 192px 0 0; }
+.v-glow { position: absolute; left: 50%; top: 46%; width: 480px; height: 480px; translate: -50% -50%; border-radius: 50%;
+  background: radial-gradient(circle, #fff8eecc, transparent 65%); animation: vBreathe 4s ease-in-out infinite alternate; }
+@keyframes vBreathe { to { opacity: 0.5; transform: scale(1.1); } }
+
+.v-deco { position: absolute; inset: 0; }
+.v-item { position: absolute; }
+.v-item svg { display: block; width: 100%; height: auto; }
+.v-vine-l { top: 130px; left: 48px; width: 124px; opacity: 0.5; }
+.v-vine-r { top: 400px; right: 48px; width: 112px; opacity: 0.45; }
+.v-corner { top: 34px; left: -16px; width: 112px; animation: vFromL 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 2s both; }
+.v-spray { top: 0; right: -64px; width: 204px; animation: vFromR 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.9s both; }
+.v-peek { top: 610px; left: -26px; width: 112px; animation: vFromL 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 2.3s both; }
+.v-pond { bottom: -20px; right: -48px; width: 330px; animation: vFromB 1.5s cubic-bezier(0.2, 0.7, 0.2, 1) 2.1s both; }
+@keyframes vFromL { from { transform: translateX(-130%); } }
+@keyframes vFromR { from { transform: translateX(130%); } }
+@keyframes vFromB { from { transform: translateY(110%); } }
+
+/* scenes */
+.v-scene {
+  position: absolute; left: 64px; right: 64px; top: 140px; bottom: 150px; z-index: 5;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  animation: vShow 0.01s linear var(--in) both, vHide 0.7s ease var(--out) forwards;
+}
+.v-scene--last { animation: vShow 0.01s linear var(--in) both; }
+@keyframes vShow { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vHide { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-34px); } }
+
+.v-up { animation: vUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--t, var(--in)) both; }
+@keyframes vUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+.v-write { animation: vWrite 1.3s ease-in-out var(--t) both; }
+@keyframes vWrite { from { clip-path: inset(-30% 100% -30% -10%); } to { clip-path: inset(-30% -10% -30% -10%); } }
+.v-pop { animation: vPop 0.8s cubic-bezier(0.3, 1.5, 0.5, 1) var(--t) both; }
+@keyframes vPop { from { opacity: 0; transform: scale(0.3); } to { opacity: 1; transform: none; } }
+.v-drop { animation: vDrop 1s cubic-bezier(0.3, 1.4, 0.5, 1) var(--t) both; }
+@keyframes vDrop { from { opacity: 0; transform: translateY(-170px); } 50% { opacity: 1; } to { opacity: 1; transform: none; } }
+
+.v-emblem { width: 80px; height: 70px; }
+.v-flourish { width: 250px; height: 24px; margin: 14px 0; }
+.v-flourish--heart { width: 290px; margin: 22px 0; }
+.v-caps { font: 600 19px/1.8 var(--serif); letter-spacing: 0.17em; text-transform: uppercase; color: var(--ink); }
+.v-names { display: flex; flex-direction: column; align-items: center; margin: 4px 0 0; font-weight: 400; }
+.v-name { font-family: var(--script); color: var(--rose); font-size: 58px; line-height: 1.3; padding: 0 12px; white-space: nowrap; }
+.v-name + .v-amp + .v-name { font-size: 70px; }
+.v-amp { font-family: var(--script); color: var(--rose); font-size: 60px; line-height: 1; margin: 2px 0; }
+
+.v-title { font-family: var(--script); font-weight: 400; font-size: 78px; line-height: 1.1; color: var(--rose); margin: 4px 0 26px; }
+.v-medal {
+  position: relative; width: 264px; height: 264px; border-radius: 50%; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; color: #5a2a05;
+  background: radial-gradient(circle at 35% 30%, #fbe7a1, #d9a33a 50%, #9c6512);
+  box-shadow: 0 0 0 7px var(--ivory), 0 0 0 9px var(--gilt), 0 22px 44px #a12a5233, inset 0 -8px 18px #6b420a66;
+}
+.v-medal__month, .v-medal__year { font: 700 22px/1 var(--serif); letter-spacing: 0.28em; text-transform: uppercase; padding-left: 0.28em; }
+.v-medal__day { font: 700 116px/1 var(--serif); color: var(--maroon); margin: 4px 0 0; }
+.v-shine { position: absolute; inset: -20%; background: linear-gradient(110deg, transparent 38%, #fffbe9cc 50%, transparent 62%);
+  transform: translateX(-130%); animation: vShine 1.4s ease 11.8s both; }
+@keyframes vShine { to { transform: translateX(130%); } }
+.v-time { font: 700 28px/1.3 var(--serif); color: var(--rose); letter-spacing: 0.04em; }
+
+.v-pin { width: 72px; height: 96px; filter: drop-shadow(0 10px 8px #a12a5238); }
+.v-pin-shadow { display: block; width: 50px; height: 11px; border-radius: 50%; background: #a12a522e; margin: 2px 0 24px; }
+.v-venue { font: 700 36px/1.25 var(--serif); color: var(--rose); margin-top: 8px; }
+.v-address { font-size: 25px; color: var(--ink); }
+
+.v-closing-names { display: flex; flex-direction: column; align-items: center; font-family: var(--script); font-weight: 400; font-size: 74px; line-height: 1.1; color: var(--rose); margin-top: 10px; }
+.v-closing-amp { font-size: 0.7em; }
+.v-link { margin-top: 30px; font: italic 600 22px/1.4 var(--serif); color: var(--muted); }
+
+/* ambient petals sit under the doors; the shower falls over them */
+.v .petals { z-index: 20; }
+
+/* petal shower */
+.v-burst { position: absolute; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
+.v-burst span { position: absolute; top: -30px; border-radius: 60% 0 60% 0; opacity: 0.9;
+  animation-name: fall; animation-timing-function: cubic-bezier(0.3, 0.2, 0.6, 1); animation-fill-mode: both; }
+
+/* doors */
+.v-doors { position: absolute; inset: 0; z-index: 30; perspective: 1700px; animation: vGone 0.6s ease 2.9s forwards; }
+@keyframes vGone { to { opacity: 0; visibility: hidden; } }
+.v-doors__light { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, #fff3c4dd 0%, #ffcf6b77 32%, transparent 70%);
+  animation: vShow 0.5s ease 1.5s both; }
+.v-door { transition: none; }
+.v-door--l { right: 50%; transform-origin: left center; animation: vDoorL 1.6s cubic-bezier(0.6, 0.05, 0.25, 1) 1.4s both; }
+.v-door--r { left: 50%; transform-origin: right center; animation: vDoorR 1.6s cubic-bezier(0.6, 0.05, 0.25, 1) 1.4s both; }
+.v-door--l .door__knocker { right: 18px; }
+.v-door--r .door__knocker { left: 18px; }
+@keyframes vDoorL { from { transform: none; } to { transform: rotateY(-108deg); } }
+@keyframes vDoorR { from { transform: none; } to { transform: rotateY(108deg); } }
+.v-doors__toran { position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 3; filter: drop-shadow(0 4px 4px #0006); animation: vOut 0.5s ease 1.8s forwards; }
+.v-doors__strand { position: absolute; top: 24px; width: 28px; height: 62%; z-index: 3; animation: vOut 0.5s ease 1.8s forwards; }
+.v-doors__strand--l { left: 12px; }
+.v-doors__strand--r { right: 12px; }
+@keyframes vOut { to { opacity: 0; } }
+.v-doors__center { position: absolute; z-index: 4; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: 22px; animation: vCenterOut 0.5s ease 1.2s forwards; }
+@keyframes vCenterOut { to { opacity: 0; transform: translate(-50%, -50%) scale(1.3); } }
+.v .seal { width: 160px; height: 160px; }
+.v .seal span { font-size: 56px; }
+.v .seal i { font-size: 32px; }
+.v-doors__hint { font: 600 24px/1 var(--serif); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-l); text-shadow: 0 2px 8px #000; white-space: nowrap; }
