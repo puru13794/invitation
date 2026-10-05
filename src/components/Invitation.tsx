@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { invitation as inv } from "@/config";
 import { useMusic } from "@/lib/useMusic";
 import { useParallax, useReveal } from "@/lib/motion";
-import { Diya, Divider, Kalash, Mandala, Rings, Toran } from "./Art";
+import { Divider, Kalash, Mandala, Rings } from "./Art";
 import { Doors } from "./Doors";
 import { Countdown } from "./Countdown";
 import { ScratchReveal } from "./ScratchReveal";
@@ -46,15 +46,6 @@ export function Invitation() {
     window.scrollTo(0, 0);
   }, [music]);
 
-  const share = async () => {
-    const data = { title: `${inv.groom.name} & ${inv.bride.name}`, text: inv.shareText, url: window.location.href };
-    if (navigator.share) {
-      try { await navigator.share(data); } catch { /* cancelled */ }
-    } else {
-      window.open(`https://wa.me/?text=${encodeURIComponent(`${inv.shareText}\n${data.url}`)}`, "_blank");
-    }
-  };
-
   const cal = calendarLinks();
 
   return (
@@ -74,8 +65,7 @@ export function Invitation() {
         <section className="section invite" id="invite" data-parallax>
           <div className="layer" data-speed="0.15"><Mandala className="bg-mandala" /></div>
           <div className="invite__frame" data-reveal>
-            <p className="telugu invite__telugu">సాదరంగా ఆహ్వానిస్తున్నాము</p>
-            <p className="kicker">Together with our families</p>
+            <p className="kicker invite__first">Together with our families</p>
             <p className="invite__text">
               we joyfully invite you and your family to grace the auspicious occasion of the
               <strong> engagement </strong>of
@@ -108,7 +98,6 @@ export function Invitation() {
             <ScratchReveal onReveal={() => setBurst((b) => b + 1)}>
               <span className="scratch__date">{inv.dateText}</span>
               <span className="scratch__time">{inv.timeText}</span>
-              <span className="telugu scratch__te">{inv.teluguDateText}</span>
             </ScratchReveal>
           </div>
           <p className="kicker save__until" data-reveal>Counting down to the muhurtham</p>
@@ -119,21 +108,6 @@ export function Invitation() {
           </div>
         </section>
 
-        {/* ═════════ CLOSING ═════════ */}
-        <section className="section closing">
-          <Toran className="closing__toran" />
-          <div data-reveal>
-            <p className="telugu closing__te">మీ రాకే మాకు ఆనందం</p>
-            <p className="closing__en">Your presence is our greatest blessing</p>
-            <Divider className="divider" />
-            <p className="kicker">With love &amp; best compliments from</p>
-            <p className="closing__hosts">{inv.hosts}</p>
-            <p className="closing__note">Kindly bless the couple with your gracious presence.</p>
-            <button className="btn" onClick={share}>💌 Share Invitation</button>
-          </div>
-          <div className="closing__diyas"><Diya className="diya" /><Diya className="diya" /><Diya className="diya" /><Diya className="diya" /><Diya className="diya" /></div>
-          <p className="closing__foot">{inv.groom.name.split(" ")[0]} ♥ {inv.bride.name.split(" ")[0]}</p>
-        </section>
       </main>
     </div>
   );

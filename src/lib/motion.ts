@@ -51,7 +51,7 @@ export function useReveal(enabled: boolean) {
           }
         }
       },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
+      { rootMargin: "0px 0px -6% 0px", threshold: 0.1 },
     );
     document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
     return () => io.disconnect();

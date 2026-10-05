@@ -6,12 +6,10 @@
 export const invitation = {
   groom: {
     name: "Purushottam Reddy",
-    teluguName: "పురుషోత్తమ్ రెడ్డి",
     parents: "S/o Sri Ramakrishna Reddy & Smt. Anjanamma",
   },
   bride: {
     name: "Kavya Reddy",
-    teluguName: "కావ్య రెడ్డి",
     parents: "D/o Late Sri Raja Gopal Reddy & Smt. Mani Kumari",
   },
 
@@ -26,7 +24,6 @@ export const invitation = {
   /** Shown exactly as written on the invitation. */
   dateText: "Monday, 12 October 2026",
   timeText: "10:00 AM onwards",
-  teluguDateText: "సోమవారం, 12 అక్టోబర్ 2026",
 
   venue: {
     name: "Sri Suryanarayana Swamy Devalayam",
@@ -43,10 +40,6 @@ export const invitation = {
     mapEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800!2d78.0340442!3d15.7962432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5ddc37f3d71bd%3A0x90637bdf2e636b9c!2sSri%20Suryanarayana%20Swamy%20Devalayam!5e0!3m2!1sen!2sin!4v1791200000000!5m2!1sen!2sin",
   },
-
-  hosts: "Ramakrishna Reddy's Family & Gopal Reddy's Family",
-  /** Shared via WhatsApp / native share. */
-  shareText: "You're invited to the engagement of Purushottam Reddy & Kavya Reddy 💍",
 
   /**
    * Background music (loops). Replace /public/music/engagement.mp3 to change it.

@@ -32,7 +32,6 @@ export function Doors({ onOpen }: { onOpen: () => void }) {
       <MarigoldStrand className="doors__strand doors__strand--r" count={22} />
 
       <div className="doors__center">
-        <p className="telugu doors__sri">శ్రీరస్తు · శుభమస్తు</p>
         <div className="seal">
           <span>{invitation.groom.name[0]}</span>
           <i>&amp;</i>
