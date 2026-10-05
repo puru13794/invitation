@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { invitation as inv } from "@/config";
 import { useMusic } from "@/lib/useMusic";
 import { useParallax, useReveal } from "@/lib/motion";
-import { Divider, Kalash, Mandala, Rings } from "./Art";
+import { Emblem, Flourish, GoldVine, LotusCorner, LotusPeek, LotusPond, LotusSpray } from "./Art";
 import { Doors } from "./Doors";
 import { Countdown } from "./Countdown";
 import { ScratchReveal } from "./ScratchReveal";
@@ -61,54 +61,92 @@ export function Invitation() {
       </button>
 
       <main className="page">
-        {/* ═════════ INVITE + VENUE ═════════ */}
-        <section className="section invite" id="invite" data-parallax>
-          <div className="layer" data-speed="0.15"><Mandala className="bg-mandala" /></div>
-          <div className="invite__frame" data-reveal>
-            <p className="kicker invite__first">Together with our families</p>
-            <p className="invite__text">
-              we joyfully invite you and your family to grace the auspicious occasion of the
-              <strong> engagement </strong>of
+        {/* ═════════ PAGE 1 · INVITATION + VENUE ═════════ */}
+        <section className="sheet" data-parallax>
+          <Frame />
+          <div className="sheet__content">
+            <Emblem className="emblem" />
+            <Flourish className="flourish" />
+            <p className="caps" data-reveal>
+              Together with our families<br />we invite you to celebrate<br />the engagement of
             </p>
-            <div className="invite__pair">
-              <div><span className="script">{inv.groom.name}</span><small>{inv.groom.parents}</small></div>
-              <Rings className="rings" />
-              <div><span className="script">{inv.bride.name}</span><small>{inv.bride.parents}</small></div>
-            </div>
-            <p className="invite__text">and bless the couple as two families become one.</p>
+            <Flourish className="flourish" />
 
-            <Divider className="divider" />
-            <p className="kicker">Venue</p>
-            <h3 className="invite__venue">{inv.venue.name}</h3>
-            <p className="invite__address">{inv.venue.address}</p>
-            <p className="invite__when">{inv.dateText} · {inv.timeText}</p>
-            <div className="venue__map">
+            <h1 className="names">
+              <span className="names__one" data-reveal>{inv.groom.name}</span>
+              <span className="parents" data-reveal>{inv.groom.parents}</span>
+              <span className="names__amp" data-reveal>&amp;</span>
+              <span className="names__two" data-reveal>{inv.bride.name}</span>
+              <span className="parents" data-reveal>{inv.bride.parents}</span>
+            </h1>
+
+            <Flourish className="flourish flourish--heart" heart />
+
+            <div data-reveal>
+              <p className="label">Venue</p>
+              <h2 className="venue-name">{inv.venue.name}</h2>
+              <Flourish className="flourish flourish--sm" />
+              <p className="venue-address">{inv.venue.address}</p>
+              <p className="venue-when">{inv.dateText} · {inv.timeText}</p>
+            </div>
+            <div className="map" data-reveal>
               <iframe src={inv.venue.mapEmbedUrl} title="Venue location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
             </div>
-            <a className="btn" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer">📍 Get Directions</a>
+            <a className="btn" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer" data-reveal>📍 Get Directions</a>
+
+            <Flourish className="flourish flourish--heart" heart />
+            <p className="caps caps--sm" data-reveal>Your presence will make<br />our day more special.</p>
           </div>
         </section>
 
-        {/* ═════════ SAVE THE DATE ═════════ */}
-        <section className="section save" data-parallax>
-          <div className="layer save__kalash" data-speed="-0.15"><Kalash className="kalash kalash--l" /><Kalash className="kalash kalash--r" /></div>
-          <p className="kicker" data-reveal>Mark your calendar</p>
-          <h2 className="heading" data-reveal>Save the Date</h2>
-          <div data-reveal>
-            <ScratchReveal onReveal={() => setBurst((b) => b + 1)}>
-              <span className="scratch__date">{inv.dateText}</span>
-              <span className="scratch__time">{inv.timeText}</span>
-            </ScratchReveal>
-          </div>
-          <p className="kicker save__until" data-reveal>Counting down to the muhurtham</p>
-          <div data-reveal><Countdown target={inv.dateISO} /></div>
-          <div className="btn-row" data-reveal>
-            <a className="btn" href={cal.google} target="_blank" rel="noopener noreferrer">📅 Google Calendar</a>
-            <a className="btn btn--ghost" href={cal.ics} download="engagement.ics">🍎 Apple / Other</a>
+        {/* ═════════ PAGE 2 · SAVE THE DATE ═════════ */}
+        <section className="sheet" data-parallax>
+          <Frame />
+          <div className="sheet__content">
+            <Emblem className="emblem" />
+            <p className="caps" data-reveal>Mark your calendar</p>
+            <h2 className="title" data-reveal>Save the Date</h2>
+            <Flourish className="flourish flourish--heart" heart />
+            <div data-reveal>
+              <ScratchReveal onReveal={() => setBurst((b) => b + 1)}>
+                <span className="scratch__date">{inv.dateText}</span>
+                <span className="scratch__time">{inv.timeText}</span>
+              </ScratchReveal>
+            </div>
+            <p className="caps caps--sm save__until" data-reveal>Counting down to the muhurtham</p>
+            <div data-reveal><Countdown target={inv.dateISO} /></div>
+            <div className="btn-row" data-reveal>
+              <a className="btn" href={cal.google} target="_blank" rel="noopener noreferrer">📅 Google Calendar</a>
+              <a className="btn btn--ghost" href={cal.ics} download="engagement.ics">🍎 Apple / Other</a>
+            </div>
+            <Flourish className="flourish" />
           </div>
         </section>
-
       </main>
     </div>
+  );
+}
+
+/** Carved marble arch with lotus & gold-vine decoration (parallax layers). */
+function Frame() {
+  return (
+    <>
+      <div className="frame" aria-hidden>
+        <div className="frame__lintel" />
+        <div className="frame__pillar frame__pillar--l" />
+        <div className="frame__pillar frame__pillar--r" />
+        <div className="frame__arch"><div className="frame__panel" /></div>
+      </div>
+      <div className="deco deco--back" aria-hidden>
+        <div className="deco__item deco__vine-l" data-speed="0.05"><GoldVine className="vine" /></div>
+        <div className="deco__item deco__vine-r" data-speed="0.08"><GoldVine className="vine vine--flip" /></div>
+      </div>
+      <div className="deco" aria-hidden>
+        <div className="deco__item deco__corner" data-speed="0.1"><LotusCorner className="sway" /></div>
+        <div className="deco__item deco__spray" data-speed="0.16"><LotusSpray className="sway sway--slow" /></div>
+        <div className="deco__item deco__peek" data-speed="0.06"><LotusPeek className="sway" /></div>
+        <div className="deco__item deco__pond" data-speed="-0.06"><LotusPond /></div>
+      </div>
+    </>
   );
 }

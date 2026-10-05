@@ -1,5 +1,5 @@
-/* Falling marigold & rose petals — pure CSS, deterministic so SSR matches. */
-const COLORS = ["#f39c12", "#f6b21b", "#e8556d", "#ef7d12", "#f7c0cb", "#c4141e"];
+/* Falling lotus & rose petals — pure CSS, deterministic so SSR matches. */
+const COLORS = ["#f6a9c2", "#e2588a", "#fbd5e1", "#f094b4", "#d9b56a", "#ef7fa5"];
 
 function rand(seed: number) {
   const x = Math.sin(seed * 9301 + 49297) * 233280;
