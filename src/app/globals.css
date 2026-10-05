@@ -178,14 +178,14 @@ a { color: inherit; }
 .label::before, .label::after { content: ""; width: 34px; height: 1px; background: var(--gilt); }
 .venue-name { font: 700 22px/1.25 var(--serif); color: var(--rose); margin-top: 8px; }
 .venue-address { font-size: 16.5px; line-height: 1.45; color: var(--ink); }
-.when-date { font: 700 21px/1.3 var(--serif); color: var(--rose); margin-top: 8px; }
-.when-time { font-size: 16.5px; color: var(--ink); }
 .map {
-  width: 100%; max-width: 280px; height: 150px; margin: 16px auto 14px; border-radius: 14px; overflow: hidden;
+  width: 100%; max-width: 280px; height: 160px; margin: 16px auto 14px; border-radius: 14px; overflow: hidden;
   background: #f3e8dc; box-shadow: 0 0 0 1.5px var(--gilt), 0 8px 18px #a12a521f;
 }
 .map { position: relative; }
-.map iframe { width: 100%; height: 100%; border: 0; display: block; }
+/* Taller than its box and shifted up: Google's own "Maps" button (top-left)
+   is cropped out of view, while the bottom attribution stays visible. */
+.map iframe { width: 100%; height: calc(100% + 60px); margin-top: -60px; border: 0; display: block; }
 .map__chip {
   position: absolute; top: 6px; left: 6px; min-width: 88px; height: 40px; padding: 0 12px;
   display: flex; align-items: center; justify-content: center; gap: 4px;
@@ -209,6 +209,8 @@ a { color: inherit; }
 .scratch--done { touch-action: auto; }
 .scratch--done .scratch__content { animation: pop 0.7s ease; }
 @keyframes pop { 0% { opacity: 0; transform: scale(0.3); } 70% { opacity: 1; transform: scale(1.15); } 100% { opacity: 1; transform: none; } }
+.scratch-wrap { margin-top: 10px; }
+.countdown-wrap { width: 100%; }
 .save__until { margin-top: 30px; }
 
 .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; width: 100%; }

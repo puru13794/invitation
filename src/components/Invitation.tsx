@@ -61,7 +61,7 @@ export function Invitation() {
       </button>
 
       <main className="page">
-        {/* ═════════ PAGE 1 · INVITATION + VENUE ═════════ */}
+        {/* ═════════ PAGE 1 · INVITATION → DATE REVEAL ═════════ */}
         <section className="sheet" data-parallax>
           <Frame />
           <div className="sheet__content">
@@ -82,52 +82,42 @@ export function Invitation() {
 
             <Flourish className="flourish flourish--heart" heart />
 
-            <div data-reveal>
-              <p className="label">Date &amp; Time</p>
-              <p className="when-date">{inv.dateText}</p>
-              <p className="when-time">{inv.timeText}</p>
-            </div>
-
-            <Flourish className="flourish flourish--sm" />
-
-            <div data-reveal>
-              <p className="label">Venue</p>
-              <h2 className="venue-name">{inv.venue.name}</h2>
-              <p className="venue-address">{inv.venue.address}</p>
-            </div>
-            <div className="map" data-reveal>
-              <iframe src={inv.venue.mapEmbedUrl} title="Venue location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
-              {/* covers Google's small "Maps" button with our own "Venue" chip (same link) */}
-              <a className="map__chip" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer">📍 Venue</a>
-            </div>
-            <a className="btn" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer" data-reveal>📍 Get Directions</a>
-
-            <Flourish className="flourish flourish--heart" heart />
-            <p className="caps caps--sm" data-reveal>Your presence will make<br />our day more special.</p>
-          </div>
-        </section>
-
-        {/* ═════════ PAGE 2 · SAVE THE DATE ═════════ */}
-        <section className="sheet" data-parallax>
-          <Frame />
-          <div className="sheet__content">
-            <Emblem className="emblem" />
-            <p className="caps" data-reveal>Mark your calendar</p>
-            <h2 className="title" data-reveal>Save the Date</h2>
-            <Flourish className="flourish flourish--heart" heart />
-            <div data-reveal>
+            <p className="caps" data-reveal>Save the date</p>
+            <div className="scratch-wrap" data-reveal>
               <ScratchReveal onReveal={() => setBurst((b) => b + 1)}>
                 <span className="scratch__date">{inv.dateText}</span>
                 <span className="scratch__time">{inv.timeText}</span>
               </ScratchReveal>
             </div>
             <p className="caps caps--sm save__until" data-reveal>Counting down to the muhurtham</p>
-            <div data-reveal><Countdown target={inv.dateISO} /></div>
+            <div className="countdown-wrap" data-reveal><Countdown target={inv.dateISO} /></div>
             <div className="btn-row" data-reveal>
               <a className="btn" href={cal.google} target="_blank" rel="noopener noreferrer">📅 Google Calendar</a>
               <a className="btn btn--ghost" href={cal.ics} download="engagement.ics">🍎 Apple / Other</a>
             </div>
-            <Flourish className="flourish" />
+          </div>
+        </section>
+
+        {/* ═════════ PAGE 2 · VENUE ═════════ */}
+        <section className="sheet" data-parallax>
+          <Frame />
+          <div className="sheet__content">
+            <Emblem className="emblem" />
+            <p className="caps" data-reveal>Join us at</p>
+            <h2 className="title" data-reveal>The Venue</h2>
+            <Flourish className="flourish flourish--heart" heart />
+            <div data-reveal>
+              <h3 className="venue-name">{inv.venue.name}</h3>
+              <Flourish className="flourish flourish--sm" />
+              <p className="venue-address">{inv.venue.address}</p>
+            </div>
+            <div className="map" data-reveal>
+              <iframe src={inv.venue.mapEmbedUrl} title="Venue location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+              <a className="map__chip" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer">📍 Venue</a>
+            </div>
+            <a className="btn" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer" data-reveal>📍 Get Directions</a>
+            <Flourish className="flourish flourish--heart" heart />
+            <p className="caps caps--sm" data-reveal>Your presence will make<br />our day more special.</p>
           </div>
         </section>
       </main>
