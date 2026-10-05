@@ -56,7 +56,6 @@ export function Invitation() {
   };
 
   const cal = calendarLinks();
-  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(inv.venue.mapQuery)}&z=15&output=embed`;
 
   return (
     <div className={`site ${opened ? "is-open" : ""}`}>
@@ -192,7 +191,7 @@ export function Invitation() {
             <p>{inv.venue.address}</p>
             <p className="venue__when">{inv.dateText} · {inv.timeText}</p>
             <div className="venue__map">
-              <iframe src={mapSrc} title="Venue location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+              <iframe src={inv.venue.mapEmbedUrl} title="Venue location map" loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
             </div>
             <a className="btn" href={inv.venue.mapsLink} target="_blank" rel="noopener noreferrer">📍 Get Directions</a>
           </div>

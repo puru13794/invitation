@@ -36,10 +36,9 @@ export function useMusic(src: string) {
       ctx.current = new AC();
       void ctx.current.resume();
     }
-    const a = new Audio(src);
+    const a = audio.current ?? new Audio(src);
     a.loop = true;
     a.volume = 0.75;
-    a.preload = "auto";
     audio.current = a;
     a.play()
       .then(() => {
@@ -72,6 +71,14 @@ export function useMusic(src: string) {
     if (playing) pause();
     else resume();
   }, [playing, start, pause, resume]);
+
+  // Start buffering the track right away so it plays the instant the doors open.
+  useEffect(() => {
+    const a = new Audio();
+    a.preload = "auto";
+    a.src = src;
+    audio.current = a;
+  }, [src]);
 
   // Quiet down when the guest switches apps / locks the phone.
   useEffect(() => {

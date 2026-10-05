@@ -37,10 +37,11 @@ export const invitation = {
      */
     mapsLink: "https://maps.app.goo.gl/rLMGh42UFxNCVZKQ7",
     /**
-     * What the embedded map should point at: the venue's name + city,
-     * or exact coordinates like "17.4935,78.3910".
+     * The embedded map. To change it: open the place in Google Maps on a computer →
+     * Share → "Embed a map" → copy just the https://www.google.com/maps/embed?pb=… part.
      */
-    mapQuery: "Sri Suryanarayana Swamy Devalayam, Balaji Nagar, Kallur, Kurnool, Andhra Pradesh 518003",
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800!2d78.0340442!3d15.7962432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5ddc37f3d71bd%3A0x90637bdf2e636b9c!2sSri%20Suryanarayana%20Swamy%20Devalayam!5e0!3m2!1sen!2sin!4v1791200000000!5m2!1sen!2sin",
   },
 
   /** Order of the ceremony — edit, add or remove freely. */
@@ -56,9 +57,8 @@ export const invitation = {
   shareText: "You're invited to the engagement of Purushottam Reddy & Kavya Reddy 💍",
 
   /**
-   * Background music. Drop an MP3 at /public/music/engagement.mp3 and it will
-   * be used automatically. If the file is missing, a built-in Carnatic-style
-   * melody (raga Mohanam with tanpura & temple bells) plays instead.
+   * Background music (loops). Replace /public/music/engagement.mp3 to change it.
+   * If the file is ever missing, a built-in Carnatic-style melody plays instead.
    */
   musicSrc: "/music/engagement.mp3",
 } as const;
