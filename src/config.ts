@@ -44,14 +44,6 @@ export const invitation = {
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800!2d78.0340442!3d15.7962432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5ddc37f3d71bd%3A0x90637bdf2e636b9c!2sSri%20Suryanarayana%20Swamy%20Devalayam!5e0!3m2!1sen!2sin!4v1791200000000!5m2!1sen!2sin",
   },
 
-  /** Order of the ceremony — edit, add or remove freely. */
-  programme: [
-    { time: "10:00 AM", title: "Ganapathi Puja", text: "Seeking Lord Ganesha's blessings for an auspicious beginning." },
-    { time: "[10:30 AM]", title: "Thamboolam Exchange", text: "Both families exchange betel leaves, fruits & flowers — a promise made." },
-    { time: "[11:00 AM]", title: "Ring Ceremony", text: "Purushottam & Kavya exchange rings before family and friends." },
-    { time: "[12:30 PM]", title: "Vindhu Bhojanam", text: "A traditional feast served on banana leaves. Please join us!" },
-  ],
-
   hosts: "Ramakrishna Reddy's Family & Gopal Reddy's Family",
   /** Shared via WhatsApp / native share. */
   shareText: "You're invited to the engagement of Purushottam Reddy & Kavya Reddy 💍",
